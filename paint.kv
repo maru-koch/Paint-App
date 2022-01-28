@@ -1,0 +1,85 @@
+#: import c kivy.utils.get_color_from_hex
+<ColorButton@RadioButton>
+    group: 'color'
+    background_normal: 'color_button_normal.png'
+    background_down: 'color_button_down.png'
+    on_release: app.canvas_widget.set_color(self.background_color)
+<LineWithButton@ColorButton>
+    group: 'line_width'
+    color: c('#2c3e50')
+    background_color: c('#ecf0f1')
+    on_release: app.canvas_widget.set_line_width(self.text)
+
+<CanvasWidget>:
+    BoxLayout:
+        orientation: 'horizontal'
+        padding: 3
+        spacing: 3
+        top: root.top
+        width: root.width
+        height: 40
+
+        Label:
+            text: "Doubledot"
+            color: c("#454545")
+            markup: True
+            bold: True
+        Label:
+            text: "Project 3"
+            color: c("#454545")
+    Button:
+        text: "delete"
+        height: 50
+        width: 100
+        top: root.top - 40
+        right: root.right
+        on_press: root.clear()
+        background_color: c("#2980b9")
+        
+    BoxLayout:
+        orientation: 'horizontal'
+        padding: 3
+        spacing: 3
+        width: root.width
+        height: 40
+
+        ColorButton:
+            state: 'down'
+            background_color: c("#2980b9")
+        ColorButton:
+            state: 'down'
+            background_color: c("#16a085")
+        ColorButton:
+            state: 'down'
+            background_color: c("#27ae60")
+        ColorButton:
+            state: 'down'
+            background_color: c("#128946")
+        ColorButton:
+            state: 'down'
+            background_color: c("#126746")
+        ColorButton:
+            state: 'down'
+            background_color: c("#123446")
+        ColorButton:
+            state: 'down'
+            background_color: c("#121246")
+        ColorButton:
+            state: 'down'
+            background_color: c("#128911")
+    Spinner:
+        id: spinner
+        text: 'Normal'
+        values: ['Thin', 'Normal', 'Thick']
+        background_color: c("#2980b9")
+        padding: (2, 2)
+        
+        spacing: 3
+        width: 100
+        height: 50
+        top: root.top - 40
+        x: 0
+        on_press: app.canvas_widget.set_line_width(self.text)
+    
+
+        
